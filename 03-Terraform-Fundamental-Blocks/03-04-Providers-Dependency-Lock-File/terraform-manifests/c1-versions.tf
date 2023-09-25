@@ -1,12 +1,12 @@
 # Terraform Settings Block
 terraform {
   # Terraform Version
-  required_version = "~> 0.14.6"
+  required_version = "~> 1.5.7"
   required_providers {
     # AWS Provider 
     aws = {
       source  = "hashicorp/aws"
-      version = ">= 2.0.0"
+      version = ">= 2.0.0, <3.0"
     }
     # Random Provider
     random = {
