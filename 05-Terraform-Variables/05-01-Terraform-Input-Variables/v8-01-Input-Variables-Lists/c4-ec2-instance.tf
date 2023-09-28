@@ -1,19 +1,10 @@
-# Create EC2 Instance
-resource "aws_instance" "my-ec2-vm" {
-  ami                    = var.ec2_ami_id
-  instance_type          = var.ec2_instance_type[0]
-  key_name               = "terraform-key"
-  count                  = var.ec2_instance_count
-  user_data              = <<-EOF
-    #!/bin/bash
-    sudo yum update -y
-    sudo yum install httpd -y
-    sudo systemctl enable httpd
-    sudo systemctl start httpd
-    echo "<h1>Welcome to Apache ! AWS Infra created using Terraform in us-east-1 Region</h1>" > /var/www/html/index.html
-    EOF
-  vpc_security_group_ids = [aws_security_group.vpc-ssh.id, aws_security_group.vpc-web.id]
+resource "aws_instance" "web" {
+  ami           = var.ami_id
+  instance_type = var.instance_type[1]
+  key_name = "demo"
+  vpc_security_group_ids = [ aws_security_group.web_sg.id,aws_security_group.ssh_sg.id ]
+
   tags = {
-    "Name" = "myec2vm"
+    Name = "webserver"
   }
 }
