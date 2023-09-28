@@ -1,22 +1,24 @@
 # Create S3 Bucket per environment with for_each and maps
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket
 
-resource "aws_s3_bucket" "mys3bucket" {
-
-  # for_each Meta-Argument
+resource "aws_s3_bucket" "demo_bucket" {
   for_each = {
-    dev  = "my-dapp-bucket"
-    qa   = "my-qapp-bucket"
-    stag = "my-sapp-bucket"
-    prod = "my-papp-bucket"
+    "dev" = "mydapp-1122",
+    "stage" = "mysapp-1122",
+    "prod" = "mypapp-1122"
   }
 
-  bucket = "${each.key}-${each.value}"
-  acl    = "private"
+  bucket = "${each.key}-${each.value}-bucket"
 
   tags = {
-    Environment = each.key
-    bucketname  = "${each.key}-${each.value}"
-    eachvalue   = each.value
+    "Name" = "demo",
+    "Env" = "Prod"
   }
 }
+
+# each.key
+# each.value
+
+# dev-mydapp-1122-bucket
+# stage-mydapp-1122-bucket
+# prod-mydapp-1122-bucket
