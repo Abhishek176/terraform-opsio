@@ -1,0 +1,15 @@
+{
+    "Id": "Policy1696671099685",
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "Stmt1696671097913",
+        "Action": [
+          "s3:GetObject"
+        ],
+        "Effect": "Allow",
+        "Resource": "arn:aws:s3:::my-tf-example-bucket-1122/*",
+        "Principal": "*"
+      }
+    ]
+  }
