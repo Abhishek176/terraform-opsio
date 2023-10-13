@@ -1,0 +1,5 @@
+#! /bin/bash
+yum update -y
+yum install -y ${package_name}
+systemctl
+yum list installed | grep ${package_name} >> /tmp/package-installed-list.txt

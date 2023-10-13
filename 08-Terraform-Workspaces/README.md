@@ -168,7 +168,7 @@ rm -rf terraform.tfstate*
 ```t
   # Adding Backend as S3 for Remote State Storage
   backend "s3" {
-    bucket = "terraform-stacksimplify"
+    bucket = "terraform-Apache"
     key    = "workspaces/terraform.tfstate"
     region = "us-east-1"  
   # For State Locking
@@ -199,7 +199,7 @@ terraform plan
 terraform apply -auto-approve
 
 # Review State file in S3 Bucket for default workspace
-Go to AWS Mgmt Console -> Services -> S3 -> terraform-stacksimplify -> workspaces -> terraform.tfstate
+Go to AWS Mgmt Console -> Services -> S3 -> terraform-Apache -> workspaces -> terraform.tfstate
 ```
 ### Step-08-03: Create new workspace dev and provison infra using that workspace
 ```t
@@ -222,7 +222,7 @@ terraform plan
 terraform apply -auto-approve
 
 # Review State file in S3 Bucket for dev workspace
-Go to AWS Mgmt Console -> Services -> S3 -> terraform-stacksimplify -> env:/ -> dev -> workspaces -> terraform.tfstate
+Go to AWS Mgmt Console -> Services -> S3 -> terraform-Apache -> env:/ -> dev -> workspaces -> terraform.tfstate
 ```
 
 ### Step-08-04: Destroy resources in both workspaces (default, dev)
